@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect, url_for
+from pprint import pprint
 
 thesis = Blueprint("thesis", __name__, url_prefix="/thesis")
 
@@ -41,3 +42,8 @@ def read():
     ]
 
     return render_template("thesis/read.html", theses=theses)
+
+@thesis.route("/create", methods=["GET","POST"])
+def create():
+
+    return render_template("thesis/create.html")

@@ -11,7 +11,10 @@ from marshmallow import Schema, fields, validate, ValidationError
 
     schema(many=True)
         valid_data -> list of dict (empty dict if none is valid)
-        messages -> { index of dict : { 'field':'error msg' }, ... }
+        messages -> { index of data : { 'field':'error msg' }, ... }
+
+    if all are valid, it will just return what you fed it 
+        and if many=True, will return a list of dict
 
 '''
 
@@ -21,64 +24,46 @@ def validate_test(s):
 
 LoginSchema = Schema.from_dict(
     {
+        "csrf_token" : fields.Str(required=True),
         "username" : fields.Str(required=True, validate=validate.Length(max=11)),
         "password" : fields.Str(validate=validate.And(validate.OneOf(["test","wtf3"]),validate_test))
     }
 )
 
-data1 = {
-        "password" : "20171111152",
-    }
-    
-data2 = {
-        "username" : "20171111152",
-        "password" : "hey3"
-    
-    }
-data3 = {
-        "username" : "hey",
-        "password" : "test4"
-    }
-
-data4 = {
-        "username" : "hey",
-        "password" : "wtf3"
-    }
+# data1 = {
+#         "username" : "11111",
+#         "password" : "wtf3"
+#     }
 
 
-try:
-    LoginSchema().load(data1)
-except ValidationError as err:
-    print("data1")
-    pprint(err.valid_data)
-    pprint(err.messages)
 
-try:
-    LoginSchema().load(data2)
-except ValidationError as err:
-    print("data2")
-    pprint(err.valid_data)
-    pprint(err.messages)
+# try:
+#     result = LoginSchema().load(data1)
 
-try:
-    LoginSchema().load(data3)
-except ValidationError as err:
-    print("data3")
-    pprint(err.valid_data)
-    pprint(err.messages)
+#     print(result)
+# except ValidationError as err:
+#     print("data1")
+#     pprint(err.valid_data)
+#     pprint(err.messages)
 
-try:
-    LoginSchema().load(data4)
-except ValidationError as err:
-    print("data4")
-    pprint(err.valid_data)
-    pprint(err.messages)
 
-# 'args',
-#  'data',
-#  'field_name',
-#  'kwargs',
-#  'messages',
-#  'normalized_messages',
-#  'valid_data',
-#  'with_traceback']
+
+
+# make Class based schema para inherit inherit nalang
+
+
+
+# def validate(dict):
+#     valid = {}
+#     invalid = {}
+
+#     try:
+#         result = validate()
+#         valid = result
+#     except:
+#         valid = err.valid_data
+#         invalid = err.messages 
+
+#     return valid, invalid
+
+
