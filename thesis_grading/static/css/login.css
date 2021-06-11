@@ -1,0 +1,13 @@
+#login-form {
+  max-width:  24em;
+  min-width:  17em;
+  margin-top:  7em !important;
+}
+
+.spacer {
+  height:  3em;
+}
+
+.card-title {
+  text-transform: uppercase;
+}

@@ -1,8 +1,42 @@
-<!-- 
+{# thesis_grading/templates/user/login.html #}
 
+<!-- 
     username maxlength 11
     password not required
 
     responsive on all breakpoints
 
+    ideas: 
+    1 add option to continue/ sign in with google 
  -->
+
+{% extends "user/layout.html" %}
+{% block title %} Login {% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+{% block content %}
+    <section class="row">
+        <div class="col-sm">
+            <div id="login-form" class="card mx-auto mt-5">
+                <div class="card-body px-4">
+                    <div class="card-title text-center h3 mt-3 mb-5">Thesis Evaluation</div>
+
+                    <form action="" method="">
+                        <div class="form-group">
+                            <input type="text" id="username" name="username" class="form-control mb-3" placeholder="Username" maxlength="11" required>
+                            <input type="password" class="form-control mb-3" placeholder="Password">
+                            <div class="spacer"></div>
+                            <a href="url_for('home')" class="card-link">Forgot password?</a>
+                            <input type="submit" value="Login" class="card-link float-end px-3 mb-4">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+{% endblock %}
+
+ 
