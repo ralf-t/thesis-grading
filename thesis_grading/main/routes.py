@@ -6,4 +6,4 @@ main = Blueprint("main", __name__)
 def home():
     # redir to login if anon
     # redir to thesis read if logged in
-    return "hello main"
+    return "hello"
