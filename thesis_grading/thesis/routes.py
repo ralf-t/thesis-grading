@@ -16,7 +16,7 @@ def read():
 
     theses = [
         {
-            "title" : "Lorem ipsum dolor set go run forrest run",
+            "title" : "Lorem ipsum dolor set go run forrest run, run to make this title longer",
             "chairman" : "Dela Cruz, Juan",
             "group_number" : 1,
             "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'],
@@ -39,6 +39,87 @@ def read():
             "adviser" : "Hwang, Yeji",
             "program_name" : "BSEMC-GD"
         },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       {
+            "title" : "Lorem ipsum dolor set go run forrest run",
+            "chairman" : "Doe, John",
+            "group_number" : 3,
+            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX'],
+            "adviser" : "Hwang, Yeji",
+            "program_name" : "BSEMC-GD"
+        },
+       
     ]
 
     return render_template("thesis/read.html", theses=theses)

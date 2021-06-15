@@ -1,6 +1,6 @@
+{# thesis_grading/templates/thesis/read.html #}
 
-
-{{theses}}
+<!-- {{theses}} -->
 
 <!-- 
     theses - list of dictionaries
@@ -22,3 +22,53 @@
 
         lmao di na ko nag bother mag search HAAHAHAHAH
  -->
+
+{% extends "thesis/layout.html" %}
+
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/thesis-read.css') }}">
+{% endblock %}
+{% block title %} All Theses {% endblock %}
+
+
+{% block content %}
+    <div class="thesis-content mt-5 py-5 container bg-white rounded">
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <div class="input-group mb-4">
+                    <input class="form-control" type="text" placeholder="Start typing to filter..." required>
+                    <button type="submit" class="btn btn-info">Search</button>
+                </div>
+            </div>
+            <div class="col-3 text-end">
+                <button class="btn btn-success">Add Thesis<i class="bi bi-plus-lg"></i></button>
+            </div>
+        </div>
+
+        <div class="thesis-table">
+            <table class="table table-striped table-bordered table-hover is-scrollable">
+              <thead>
+                <tr>
+                  <th class="col-sm-4" scope="col">Title</th>
+                  <th scope="col">Chairman</th>
+                  <th scope="col">Group No.</th>
+                  <th scope="col">Proponents</th>
+                  <th scope="col">Adviser</th>
+                  <th scope="col">Program Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for thesis in theses %}
+                <tr>
+                    {% for value in thesis %}
+                        <td>{{ thesis[value] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
