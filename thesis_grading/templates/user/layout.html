@@ -10,14 +10,19 @@
 
     <!-- Bootstrap, CSS only -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
 
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
-<body class="container">
-    {% block content %}{% endblock %}
+<body class="container bg-uered">
+    <section class="row">
+        <div class="col-sm">
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
 </body>
-</html>
-
- 
+</html> 
