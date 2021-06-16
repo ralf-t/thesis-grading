@@ -19,7 +19,7 @@ def read():
             "title" : "Lorem ipsum dolor set go run forrest run, run to make this title longer",
             "chairman" : "Dela Cruz, Juan",
             "group_number" : 1,
-            "proponents" : ['XXXXXXX','XXXXXXX','XXXXXXX','XXXXXXX'],
+            "proponents" : ['20190151324','20181534568','20153156821','20131568824'],
             "adviser" : "Shin, Ryujin",
             "program_name" : "BSCS"
         },

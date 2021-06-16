@@ -48,7 +48,7 @@
         </div>
 
         <div class="thesis-table">
-            <table class="table table-striped table-bordered table-hover is-scrollable">
+            <table class="table table-striped is-scrollable">
               <thead>
                 <tr>
                   <th class="col-sm-4" scope="col">Title</th>
@@ -60,10 +60,23 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- loop through the dictionaries in theses -->
                 {% for thesis in theses %}
                 <tr>
-                    {% for value in thesis %}
-                        <td>{{ thesis[value] }}</td>
+                    {% for key in thesis %}
+                        {% if key == 'proponents' %}
+                            <td class="lh-lg">
+                                <!-- loop through values of proponents -->
+                                {% for value in thesis[key] %}
+                                    {{ value }}<br>
+                                    <!-- for adding comma -->
+                                    <!-- {{ "," if thesis[key].index(value) != thesis[key]|length - 1 }} --> 
+                                {% endfor %}
+                            </td>
+                        {% else %}
+                            <!-- prints value of key if key is not "proponents" -->
+                            <td>{{ thesis[key] }}</td>
+                        {% endif %}
                     {% endfor %}
                 </tr>
                 {% endfor %}
