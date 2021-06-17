@@ -6,3 +6,8 @@ user = Blueprint("user", __name__, url_prefix="/user")
 def login():
     # redir to grading if logged in
     return render_template("user/login.html")
+
+@user.route("/read")
+def read():
+    
+    return render_template("user/read.html")
