@@ -2,7 +2,7 @@
 
 <!-- 
     username maxlength 11
-    password not required
+    both fields required
 
     responsive on all breakpoints
 
@@ -22,17 +22,54 @@
             <div class="card-title text-center h3 mt-3 mb-5">Thesis Evaluation</div>
 
             <!-- TODO: form attr -->
-            <form action="" method="">
+            <form id="login" action="" method="">
                 <div class="form-group">
                     <input type="text" id="username" name="username" class="form-control mb-3" placeholder="Username" maxlength="11" required>
-                    <input type="password" class="form-control mb-3" placeholder="Password">
+                    <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password">
                     <div class="spacer"></div>
                     <a href="{{ url_for('user.reset') }}" class="card-link text-uered">Forgot password?</a>
-                    <button type="submit" class="card-link button float-end px-3 mb-4" disabled="True">Login</button>
+                    <button type="submit" class="card-link button btn btn-primary float-end px-4 py-1 mb-4" disabled>Login</button>
                 </div>
             </form>
         </div>
     </div>
+{% endblock %}
+{% block scripts %}
+    <!-- 
+    ideas
+        add username requirements to validation
+     -->
+
+    <!-- https://validatejs.org/#utilities-collect-form-values -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script>
+        var constraints = {
+            username: {
+                presence: true,
+            },
+            password: {
+                presence: true,
+            }
+        };
+
+        var $username = document.getElementById('username');
+        var $password = document.getElementById('password');
+        var $form = document.querySelector('form#login,form#password_reset');
+        var $button = document.querySelector('form button[type="submit"]');
+
+        // https://stackoverflow.com/questions/40491882/using-one-event-listener-for-two-objects
+        $form.addEventListener('input', updateForm);
+        function updateForm(e) {
+            if (e.target !== e.currentTarget) {
+                if (null == validate(validate.collectFormValues($form), constraints)) {
+                    $button.removeAttribute("disabled")
+                } else {
+                    $button.setAttribute("disabled", "True");
+                }
+            }
+            e.stopPropagation();
+        }
+    </script>
 {% endblock %}
 
  
