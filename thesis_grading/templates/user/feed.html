@@ -1,0 +1,37 @@
+{# thesis_grading/templates/user/feed.html #}
+
+{% extends "user/layout.html" %}
+{% block title %} Thesis Feed {% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user/css/login.css') }}">
+{% endblock %}
+{% block content %}
+    <div id="login-form" class="card mx-auto mt-5">
+        <div class="card-body px-4">
+            <div class="card-title text-center h3 mt-3 mb-5">Thesis Evaluation (SIGN-IN TEST)</div>
+
+            <p>Signed in as <span id="username" class="fw-bold"></span><br> with email <span id="email" class="fw-bold"></span></p><br>
+
+            <h5>Feast your eyes with the thesis files:</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quod eaque accusamus eius maiores atque vitae rerum libero ab sunt aspernatur iusto sapiente, impedit porro dolor pariatur corrupti harum. Assumenda?</p><br>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt quod eaque accusamus eius maiores atque vitae rerum libero ab sunt aspernatur iusto sapiente, impedit porro dolor pariatur corrupti harum. Assumenda?</p><br>
+
+
+            <div class="d-grid">
+                <div class="g-signin2 d-none mb-4 mx-auto"></div>
+                <a href="#" onclick="signOut();">Sign out</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {% include 'user/includes/scripts.html' %}
+    <script>
+        let params = new URLSearchParams(location.search);
+        document.querySelector("#username").innerHTML = params.get('name');
+        document.querySelector("#email").innerHTML = params.get('email');
+    </script>
+{% endblock %}
+
+ 

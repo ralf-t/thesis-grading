@@ -16,3 +16,10 @@ def reset():
 def read():
     
     return render_template("user/read.html")
+
+# for testing google sign-in
+@user.route("/feed")
+def feed():
+
+    # return "feast your eyes, with the thesis files"
+    return render_template("user/feed.html")

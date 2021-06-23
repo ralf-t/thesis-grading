@@ -5,7 +5,7 @@
 }
 
 .spacer {
-  height:  3em;
+  height:  2em;
 }
 
 .card-title {
@@ -14,4 +14,18 @@
 
 a:hover {
   text-decoration:  none;
+}
+
+.divider {
+  border-top: 1px solid #d9dadc;
+  display: block;
+  line-height: 1px;
+  margin: 15px 0;
+  position: relative;
+  text-align: center;
+}
+
+.divider .divider-title {
+    background: #fff;
+    letter-spacing: 1px;
 }

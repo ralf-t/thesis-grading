@@ -23,12 +23,22 @@
 
             <!-- TODO: form attr -->
             <form id="login" action="" method="">
+
                 <div class="form-group">
                     <input type="text" id="username" name="username" class="form-control mb-3" placeholder="Username" maxlength="11" tabindex="1" required>
                     <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password" tabindex="2" required>
+
                     <div class="spacer"></div>
                     <a href="{{ url_for('user.reset') }}" class="card-link text-uered" tabindex="4">Forgot password?</a>
                     <button type="submit" class="card-link button btn btn-primary float-end px-4 py-1 mb-4" tabindex="3" disabled>Login</button>
+
+                    <div class="spacer"></div>
+                    <div class="divider mb-4">
+                        <strong class="divider-title ng-binding text-uppercase fw-bold px-4">or</strong>
+                    </div>
+                    <div class="d-grid">
+                        <div class="g-signin2 mb-4 mx-auto" data-onsuccess="onSignIn"></div>
+                    </div>
                 </div>
             </form>
         </div>

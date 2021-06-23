@@ -7,10 +7,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="100545826118-d773545e36qme94g9pdegrnvbbpdto25.apps.googleusercontent.com">
 
     <!-- Bootstrap, CSS only -->
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap-icons.css') }}">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
