@@ -14,7 +14,7 @@
 {% block title %} Login {% endblock %}
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user/css/login.css') }}">
 {% endblock %}
 {% block content %}
     <div id="login-form" class="card mx-auto mt-5">
@@ -35,41 +35,7 @@
     </div>
 {% endblock %}
 {% block scripts %}
-    <!-- 
-    ideas
-        add username requirements to validation
-     -->
-
-    <!-- https://validatejs.org/#utilities-collect-form-values -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-    <script>
-        var constraints = {
-            username: {
-                presence: true,
-            },
-            password: {
-                presence: true,
-            }
-        };
-
-        var $username = document.getElementById('username');
-        var $password = document.getElementById('password');
-        var $form = document.querySelector('form#login,form#password_reset');
-        var $button = document.querySelector('form button[type="submit"]');
-
-        // https://stackoverflow.com/questions/40491882/using-one-event-listener-for-two-objects
-        $form.addEventListener('input', updateForm);
-        function updateForm(e) {
-            if (e.target !== e.currentTarget) {
-                if (null == validate(validate.collectFormValues($form), constraints)) {
-                    $button.removeAttribute("disabled")
-                } else {
-                    $button.setAttribute("disabled", "True");
-                }
-            }
-            e.stopPropagation();
-        }
-    </script>
+    {% include 'user/includes/scripts.html' %}
 {% endblock %}
 
  

@@ -9,6 +9,7 @@ def login():
 
 @user.route("/password/reset")
 def reset():
+    
     return render_template("user/password_reset.html")
 
 @user.route("/read")

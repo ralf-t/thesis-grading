@@ -1,0 +1,46 @@
+<!-- 
+ideas
+    add username requirements to validation
+ -->
+
+<!-- https://validatejs.org/#utilities-collect-form-values -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+<script>
+    var login_constraints = {
+        username: {
+            presence: true,
+        },
+        password: {
+            presence: true,
+        }
+    };
+
+    var reset_constraints = {};
+    var constraints = {};
+
+    var $username = document.getElementById('username');
+    var $password = document.getElementById('password');
+    var $form = document.querySelector('form#login,form#password_reset');
+    var $button = document.querySelector('form button[type="submit"]');
+
+    // https://stackoverflow.com/questions/40491882/using-one-event-listener-for-two-objects
+    $form.addEventListener('input', updateForm);
+    function updateForm(e) {
+        if (e.target !== e.currentTarget) {
+            if ($form.getAttribute('id') === 'password_reset') {
+                reset_constraints = JSON.parse(JSON.stringify(login_constraints));
+                reset_constraints.password.presence = false;
+                constraints = reset_constraints;
+            } else {
+                constraints = login_constraints;
+            }
+
+            if (null == validate(validate.collectFormValues($form), constraints)) {
+                $button.removeAttribute("disabled")
+            } else {
+                $button.setAttribute("disabled", "True");
+            }
+        }
+        e.stopPropagation();
+    }
+</script>
