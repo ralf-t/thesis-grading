@@ -13,13 +13,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap-icons.css') }}">
 
-    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
 
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
 </head>
 <body class="container bg-uered">
+    <nav data-login-url="{{ url_for('user.login') }}" 
+    data-url-reset="{{ url_for('user.reset') }}"
+    data-url-feed="{{ url_for('user.feed') }}"></nav>
     <section class="row">
         <div class="col-sm">
             {% block content %}{% endblock %}

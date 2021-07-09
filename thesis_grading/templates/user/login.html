@@ -9,7 +9,6 @@
     ideas: 
     1 add option to continue/ sign in with google 
  -->
-
 {% extends "user/layout.html" %}
 {% block title %} Login {% endblock %}
 {% block head %}
@@ -38,6 +37,21 @@
                     </div>
                     <div class="d-grid">
                         <div class="g-signin2 mb-4 mx-auto" data-onsuccess="onSignIn"></div>
+                        <!-- <div id="g_id_onload"
+                             data-client_id="100545826118-d773545e36qme94g9pdegrnvbbpdto25.apps.googleusercontent.com"
+                             data-context="signin"
+                             data-ux_mode="popup"
+                             data-callback="onSignIn">
+                        </div>
+
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-shape="pill"
+                             data-theme="outline"
+                             data-text="signin_with"
+                             data-size="large"
+                             data-logo_alignment="left">
+                        </div> -->
                     </div>
                 </div>
             </form>

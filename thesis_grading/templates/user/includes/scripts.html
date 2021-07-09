@@ -47,6 +47,7 @@ ideas
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         window.location = "http://localhost:5000/user/feed?name="+profile.getName()+"&email="+profile.getEmail();
+        // window.location = "http://localhost:5000/user/feed";
     };
 
     function signOut() {
@@ -54,7 +55,7 @@ ideas
         auth2.signOut().then(function () {
           console.log('User signed out.');
         });
-        window.location = "http://localhost:5000/user/login"
+        window.location = document.querySelector('nav').getAttribute('data-login-url');
     }
 
 </script>
