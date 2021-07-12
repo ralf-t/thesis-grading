@@ -1,0 +1,50 @@
+{# thesis_grading/templates/base.html #}
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		{% block head %}
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap/Bootstrap Icon CSS -->
+		<link href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}" rel="stylesheet">
+		<link href="{{ url_for('static', filename='bootstrap/bootstrap-icons.css') }}" rel="stylesheet">
+
+		<title>{% block title %}{% endblock %}</title>
+		
+		<style>
+			
+			body {
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: cover;
+				background-position: center;
+			}
+			
+		</style>
+		{% endblock %}
+
+	</head>
+
+	<body class="container bg-uered">
+	    <section class="row">
+	        <div class="col-sm">
+	            {% block content %}{% endblock %}
+	        </div>
+	    </section>
+	    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+
+	    {% block scripts %}
+		<!-- Load React. -->
+		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+		<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+		<!-- jsx -->
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+	    {% endblock %}
+	</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block head %}
+	{{ super() }}
+{% endblock %}
+
+{% block content %}
+	<div id="dashboard_container"></div>
+{% endblock %}
+
+{% block scripts %}
+	{{ super() }}
+	<!-- Load React component. -->
+	<script type="text/babel" src="{{ url_for('static', filename='dashboard/Dashboard.jsx') }}">
+	</script>
+
+	<!-- Render -->
+	<script type="text/babel">
+		const domContainer = document.querySelector('#dashboard_container');
+
+		const dashboard = <Dashboard course='{{course|safe}}' thesis='{{thesis|safe}}' />
+		console.log(dashboard);
+
+		ReactDOM.render(dashboard, domContainer);
+	</script>
+{% endblock %}
+
+
