@@ -1,3 +1,5 @@
 node_modules
 scss
 package-lock.json
+.env
+script.py

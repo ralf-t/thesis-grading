@@ -7,6 +7,16 @@ name = "pypi"
 flask = "*"
 marshmallow = "*"
 flask-wtf = "*"
+flask-login = "*"
+python-dotenv = "*"
+flask-migrate = "*"
+flask-sqlalchemy = "*"
+flask-bcrypt = "*"
+flask-mail = "*"
+mysql-connector-python = "*"
+pytz = "*"
+pandas = "*"
+openpyxl = "*"
 
 [dev-packages]
 
