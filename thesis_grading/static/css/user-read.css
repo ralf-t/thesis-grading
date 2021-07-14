@@ -1,0 +1,10 @@
+.bi-plus-lg {
+	margin-left: 10px;
+}
+.user-table {
+	height: 90%;
+	overflow-y: auto;
+}
+.user-content {
+	height: 90vh;	/*sets height to be 90% of viewport height*/
+}

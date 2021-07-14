@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap, CSS only -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap-icons.css') }}">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+<body class="bg-uered">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-0">
+                {% block sidebar %}{% endblock %}
+            </div>
+            <div class="col-md-12">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,65 @@
+
+<!-- {{users}} -->
+
+
+
+{% extends "user/layout.html" %}
+
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user-read.css') }}">
+{% endblock %}
+{% block title %} All Users {% endblock %}
+
+
+{% block content %}
+    <div class="user-content mt-5 py-5 container bg-white rounded">
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <div class="input-group mb-4">
+                    <input class="form-control" type="text" placeholder="Start typing to filter..." required>
+                    <button type="submit" class="btn btn-info">Search</button>
+                </div>
+            </div>
+            <div class="col-3 text-end">
+                <button class="btn btn-success">Add User<i class="bi bi-plus-lg"></i></button>
+            </div>
+        </div>
+
+        <div class="user-table">
+            <table class="table table-striped is-scrollable">
+              <thead>
+                <tr>
+                  <th class="col-sm-2" scope="col">ID</th>
+                  <th class="col-sm-3" scope="col">Username</th>
+                  <th scope="col">Password</th>
+                  <th class="col-sm-3" scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- loop through the dictionaries in users -->
+                {% for user in users %}
+                <tr>
+                    {% for key in user %}
+                        {% if key == 'proponents' %}
+                            <td class="lh-lg">
+                                <!-- loop through values of proponents -->
+                                {% for value in user[key] %}
+                                    {{ value }}<br>
+                                    <!-- for adding comma -->
+                                    <!-- {{ "," if user[key].index(value) != user[key]|length - 1 }} --> 
+                                {% endfor %}
+                            </td>
+                        {% else %}
+                            <!-- prints value of key if key is not "proponents" -->
+                            <td>{{ user[key] }}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
