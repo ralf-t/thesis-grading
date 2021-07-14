@@ -1,3 +1,5 @@
+{% from "components/_dashboard.html" import section %}
+
 {% extends "base.html" %}
 {% block title %} Dashboard {% endblock %}
 {% block head %}
@@ -5,24 +7,20 @@
 {% endblock %}
 
 {% block content %}
-	<div id="dashboard_container"></div>
+<div class="Dashboard col-sm">
+  <div id="login-form" class="card container mx-auto mt-5">
+     <div class="row row-cols-1 row-cols-md-2">
+     	{{ section("Quantitative Group Rating", "list", course.criterias, "btn-assorted") }}
+     	{{ section("Quantitative Individual Rating", "list", thesis.proponents, "btn-info") }}
+     	{{ section("Qualitative Rating", "list", course.assessments, "btn-assorted btn-outline") }}
+     	{{ section("Revision", "area") }}
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
 	{{ super() }}
-	<!-- Load React component. -->
-	<script type="text/babel" src="{{ url_for('static', filename='dashboard/Dashboard.jsx') }}">
-	</script>
-
-	<!-- Render -->
-	<script type="text/babel">
-		const domContainer = document.querySelector('#dashboard_container');
-
-		const dashboard = <Dashboard course='{{course|safe}}' thesis='{{thesis|safe}}' />
-		console.log(dashboard);
-
-		ReactDOM.render(dashboard, domContainer);
-	</script>
 {% endblock %}
 
 

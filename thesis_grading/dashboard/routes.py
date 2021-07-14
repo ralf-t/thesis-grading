@@ -34,6 +34,6 @@ def read():
 
     return render_template(
         "dashboard/read.html", 
-        thesis=dumps(thesis), 
-        course=dumps(course))
+        thesis=thesis, 
+        course=course)
     # return render_template("dashboard/read.html")

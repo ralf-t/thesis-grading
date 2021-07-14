@@ -1,0 +1,158 @@
+{% set scale = ["btn-success",
+                "btn-primary", 
+                "btn-info", 
+                "btn-warning", 
+                "btn-danger", 
+                "btn-dark"] %}
+
+<!-- section  -->
+{% macro section(label, type, values, classes) %}
+    {% set content = "" %}
+    {% if type == "list" %}
+        {% set content = rating_list(values, classes) %}
+    {% endif %}
+    {% if type == "area" %}
+        {% set content = revision_area() %}
+    {% endif %}
+
+    <div class="col mb-4">
+        <label for="rating">{{label}}</label>
+        {{content}}
+    </div>
+{% endmacro %}
+
+{% macro revision_area() %}
+<div class="d-grid gap-2">
+    <textarea name="" id="" cols="30" rows="5"></textarea>
+</div>
+{% endmacro %}
+
+{% macro rating_list(values, classes) %}
+<div class="d-grid gap-2">
+    {% for value in values %}
+        {{ rating_item(value, loop.index0, classes) }}
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro rating_item(name, index, classes) %}
+    {% if "btn-outline" in classes and "btn-assorted" in classes %}
+        {% set classes = classes|replace("btn-outline", ("btn-outline-" + scale[index][4:])) %}
+    {% elif "btn-assorted" in classes %}
+        {% set classes = classes|replace("btn-assorted", scale[index]) %}
+    {% endif %}
+
+    <button class="btn {{classes}}" index="{{index}}" type="button">{{name}}</button>
+{% endmacro %}
+
+<!-- general field -->
+{% macro field(type, name, result, value) %}
+
+    {% set input_class = "form-control" %}
+    {% set feedback_class = "" %}
+
+    {% if result["valid"][name] %}
+        {% set input_class = input_class + " is-valid" %}
+    {% endif %}
+    {% if result["invalid"][name] %}
+        {% set input_class = input_class + " is-invalid" %}
+        {% set feedback_class = "invalid-feedback" %}
+
+    {% endif %}
+
+    <input type="{{type}}" name="{{name}}" value="{{value|trim}}" class="{{ input_class }}">
+    
+    <!-- feedback div for ajax -->
+    {{ feedback(feedback_class, result["invalid"][name]) }}
+
+{% endmacro %}
+
+
+<!-- select field -->
+{% macro field_select(name, result, choices, value) %}
+
+    {% set select_class = "form-select form-control" %}
+    {% set feedback_class = "" %}
+
+    {% if result["valid"][name] %}
+        {% set select_class = select_class + " is-valid" %}
+    {% endif %}
+    {% if result["invalid"][name] %}
+        {% set select_class = select_class + " is-invalid" %}
+        {% set feedback_class = "invalid-feedback" %}
+
+    {% endif %}
+    
+    <select class="{{ select_class }}" name="{{ name }}">
+        <option selected disabled value="">...</option>
+        {% for k, v in choices.items() %}
+            {% if value and k == value | int %}
+                <option selected value="{{ k }}">{{ v }}</option>
+            {% else %}
+                <option value="{{ k }}">{{ v }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+
+    <!-- feedback div for ajax -->
+    {{ feedback(feedback_class, result["invalid"][name]) }}
+
+{% endmacro %}
+
+
+<!-- textarea -->
+{% macro field_textarea(name, result, value) %}
+
+    {% set textarea_class = "form-control" %}
+    {% set feedback_class = "" %}
+
+    {% if result["valid"][name] %}
+        {% set textarea_class = textarea_class + " is-valid" %}
+    {% endif %}
+    {% if result["invalid"][name] %}
+        {% set textarea_class = textarea_class + " is-invalid" %}
+        {% set feedback_class = "invalid-feedback" %}
+
+    {% endif %}
+
+    <textarea name="{{name}}" placeholder="Brief thesis overview..." class="{{ textarea_class }}" rows="10">{{value}}</textarea>
+    <!-- feedback div for ajax -->
+    {{ feedback(feedback_class, result["invalid"][name]) }}
+
+{% endmacro %}
+
+<!-- checkbox -->
+{% macro field_checkbox(name, result, label, value) %}
+
+    {% set check_class = "form-check-input" %}
+    {% set feedback_class = "" %}
+
+    {% if result["valid"][name] %}
+        {% set check_class = check_class + " is-valid" %}
+    {% endif %}
+
+    {% if result["invalid"][name] %}
+        {% set check_class = check_class + " is-invalid" %}
+        {% set feedback_class = "invalid-feedback" %}
+    {% endif %}
+
+    <input class="{{ check_class }}" type="checkbox" value="1" {{ 'checked' if value else '' }} name="{{ name }}">
+    <label class="form-check-label">
+        {{ label }}
+    </label>
+{% endmacro %}
+
+<!-- feedback -->
+{% macro feedback(feedback_class, result) %}
+    <!-- id = feedback-{{name}} -->
+    <div class="{{ feedback_class }}">
+        
+        {% if result %}
+            {% for msg in result %}
+                <p class="mb-0"><small>{{msg}}</small></p>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+{% endmacro %}

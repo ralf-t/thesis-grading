@@ -37,14 +37,6 @@
 	    </section>
 	    <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.min.js') }}"></script>
 
-	    {% block scripts %}
-		<!-- Load React. -->
-		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-		<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-		<!-- jsx -->
-		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-	    {% endblock %}
+	    {% block scripts %}{% endblock %}
 	</body>
 </html>
